@@ -1,16 +1,26 @@
-import React, { PropsWithChildren, CSSProperties, HTMLAttributes } from 'react';
+import React, {
+  PropsWithChildren,
+  CSSProperties,
+  HTMLAttributes,
+  forwardRef,
+} from 'react';
 import { styled } from 'styled-components';
 
 type FlexProps = Pick<
   CSSProperties,
   'justifyContent' | 'alignItems' | 'flexDirection' | 'gap' | 'height' | 'width'
 > &
-  HTMLAttributes<HTMLDivElement> & { style?: CSSProperties };
+  HTMLAttributes<HTMLDivElement> & {
+    style?: CSSProperties;
+  };
 
-const Flex: React.FC<PropsWithChildren & FlexProps> = ({
-  children,
-  ...props
-}) => <Wrapper {...props}>{children}</Wrapper>;
+const Flex = forwardRef<HTMLDivElement, PropsWithChildren & FlexProps>(
+  ({ children, ...props }, ref) => (
+    <Wrapper {...props} ref={ref}>
+      {children}
+    </Wrapper>
+  )
+);
 
 const Wrapper = styled.div<FlexProps>`
   display: flex;
