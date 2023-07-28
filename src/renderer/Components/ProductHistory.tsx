@@ -3,6 +3,7 @@ import {
   TbArrowNarrowDown,
   TbArrowNarrowUp,
   TbArrowRightBar,
+  TbExchange,
 } from 'react-icons/tb';
 import Card from 'renderer/Components/Card';
 import Flex from 'renderer/Components/Flex';
@@ -18,7 +19,7 @@ const ProductHistory: React.FC<ProductHistoryType> = ({
   createdAt,
   type,
   amount,
-  value,
+  price,
 }) => {
   const ICONS = {
     [PRODUCT_HISTORY_TYPES.CREATE]: {
@@ -35,6 +36,11 @@ const ProductHistory: React.FC<ProductHistoryType> = ({
       icon: TbArrowNarrowUp,
       color: '#FF7A00',
       kind: 'Saída',
+    },
+    [PRODUCT_HISTORY_TYPES.CHANGE]: {
+      icon: TbExchange,
+      color: '#852CA5',
+      kind: 'Alteração',
     },
   };
 
@@ -68,7 +74,7 @@ const ProductHistory: React.FC<ProductHistoryType> = ({
           )}
           <Text>{amount}</Text>
         </Flex>
-        {value && (
+        {price && (
           <Flex flexDirection="column" gap="2px" alignItems="center">
             <Text color="#6A7486" fontSize="10px">
               Preço
@@ -78,11 +84,11 @@ const ProductHistory: React.FC<ProductHistoryType> = ({
               {new Intl.NumberFormat('pt-br', {
                 currency: 'BRL',
                 style: 'currency',
-              }).format(value)}
+              }).format(price)}
             </Text>
           </Flex>
         )}
-        {value && amount && (
+        {price && amount && (
           <Flex flexDirection="column" gap="2px" alignItems="center">
             <Text color="#6A7486" fontSize="10px">
               Valor da entrada
@@ -92,7 +98,7 @@ const ProductHistory: React.FC<ProductHistoryType> = ({
               {new Intl.NumberFormat('pt-br', {
                 currency: 'BRL',
                 style: 'currency',
-              }).format(value * amount)}
+              }).format(price * amount)}
             </Text>
           </Flex>
         )}
