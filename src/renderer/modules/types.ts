@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface Product {
   id: string;
   name: string;
@@ -10,6 +12,7 @@ export enum PRODUCT_HISTORY_TYPES {
   IN = 'input',
   OUT = 'output',
   CREATE = 'creation',
+  CHANGE = 'change',
 }
 
 export interface ProductHistory {
@@ -17,6 +20,12 @@ export interface ProductHistory {
   product: string;
   type: PRODUCT_HISTORY_TYPES;
   amount?: number;
-  value?: number;
+  price?: number;
   createdAt: string;
 }
+
+export type MenuItems = {
+  value: string;
+  onClick: () => void;
+  addonBefore?: ReactNode;
+};
