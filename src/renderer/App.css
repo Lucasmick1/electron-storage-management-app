@@ -2,10 +2,16 @@
  * @NOTE: Prepend a `~` to css file paths that are in your node_modules
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
+ @font-face {
+  font-family: 'Poppins';
+  src: url('../../assets//fonts/Poppins-Light.ttf');
+}
+
 
 * {
   padding: 0;
   margin: 0;
+  font-family: 'Poppins';
 }
 body {
   position: relative;
